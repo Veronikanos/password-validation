@@ -1,1 +1,16 @@
-<p>form works!</p>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput [formControl]="passwordFormControl" placeholder="please enter a password">
+
+    <!-- <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+      Please enter a valid password address
+    </mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      password is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+</form>    
+ <p *ngIf="passwordFormControl.errors?.['first']">
+      error
+    </p>
