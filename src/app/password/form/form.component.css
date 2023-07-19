@@ -1,3 +1,23 @@
-.example-form-field {
-  width: 200px;
+.security-progress-bar {
+  margin-top: 10px;
+  display: flex;
+}
+
+.strength-section {
+  flex: 1;
+  height: 10px;
+  margin-right: 5px;
+  background-color: gray; /* Default color for all sections */
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
 }
