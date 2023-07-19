@@ -4,24 +4,33 @@ import {
   FormControl,
   Validators,
   ValidatorFn,
+  ValidationErrors,
 } from '@angular/forms';
 
 // Custom validator functions
-function customValidator1(): ValidatorFn {
-  return (control: AbstractControl) => {
+function strongPasswordValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.value;
+    const valid =
+      /[a-zA-Z]/.test(password) &&
+      /[0-9]/.test(password) &&
+      /[!@#$%^&*]/.test(password);
+    return valid ? { strong: true } : null;
+  };
+}
 
+function easyPasswordValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
     console.log(control);
-    const valid = control.value.includes('5');
-    return valid ? { first: true } : null;
+    const password = control.value;
+    const valid =
+      /^[a-zA-Z]+$/.test(password) ||
+      /^\d+$/.test(password) ||
+      /^[!@#$%^&*]+$/.test(password);
+    return valid ? { easy: true } : null;
   };
 }
 
-function customValidator2(): ValidatorFn {
-  return (control: AbstractControl) => {
-    const valid = control.value.includes('2');
-    return valid ? { customValidation2: true } : null;
-  };
-}
 
 @Component({
   selector: 'app-form',
@@ -30,7 +39,9 @@ function customValidator2(): ValidatorFn {
 })
 export class FormComponent {
   passwordFormControl = new FormControl('', [
-    customValidator1(),
-    customValidator2(),
+    Validators.required,
+    Validators.minLength(8),
+    strongPasswordValidator(),
+    easyPasswordValidator(),
   ]);
 }

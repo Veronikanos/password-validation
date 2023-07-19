@@ -1,16 +1,24 @@
-<form class="example-form">
+<form class="example-form"  >
   <mat-form-field class="example-full-width">
     <mat-label>Password</mat-label>
     <input type="password" matInput [formControl]="passwordFormControl" placeholder="please enter a password">
-
-    <!-- <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
-      Please enter a valid password address
-    </mat-error>
-    <mat-error *ngIf="passwordFormControl.hasError('required')">
-      password is <strong>required</strong>
-    </mat-error> -->
   </mat-form-field>
-</form>    
- <p *ngIf="passwordFormControl.errors?.['first']">
-      error
-    </p>
+</form>
+
+ <!-- Display error messages -->
+ <div class="security-progress-bar">
+  <p *ngIf="passwordFormControl.hasError('required')">
+    Password is <strong>required</strong>.
+  </p>
+  <p *ngIf="passwordFormControl.hasError('minlength')">
+    Password must be at least 8 characters long.
+  </p>
+  <p *ngIf="passwordFormControl.hasError('strong') && !passwordFormControl.hasError('minlength')">
+    Strong password
+  <p *ngIf="passwordFormControl.hasError('easy') && !passwordFormControl.hasError('minlength')">
+    Password is too weak. Use a combination of letters, digits, or symbols.
+  </p>
+  <p *ngIf="passwordFormControl.valid">
+    Medium
+  </p>
+</div>
