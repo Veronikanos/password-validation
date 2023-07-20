@@ -1,0 +1,16 @@
+<div class="container">
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input matInput [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<!-- Display password strength sections -->
+<div class="security-progress-bar">
+  <div class="strength-section" [ngClass]="colorsForPasswordBar[0]"></div>
+  <div class="strength-section" [ngClass]="colorsForPasswordBar[1]"></div>
+  <div class="strength-section" [ngClass]="colorsForPasswordBar[2]"></div>
+</div>

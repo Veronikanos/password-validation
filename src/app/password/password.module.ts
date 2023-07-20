@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { FormComponent } from './form/form.component';
+import { CommonModule, NgIf} from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
-import { NgIf } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
+import { FormComponent } from 'src/app/password/formComponent/form.component';
 
 @NgModule({
   declarations: [FormComponent],
@@ -19,7 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     MatFormFieldModule,
     NgIf,
-    MatIconModule, 
+    MatIconModule,
     MatButtonModule,
   ],
   exports: [FormComponent],
